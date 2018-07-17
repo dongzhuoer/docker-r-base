@@ -1,5 +1,5 @@
-
 # r-base
+[![Build Status](https://travis-ci.com/dongzhuoer/docker-r-base.svg?branch=master)](https://travis-ci.com/dongzhuoer/docker-r-base)
 
 test installing R language on Travis CI
 
