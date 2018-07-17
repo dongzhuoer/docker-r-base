@@ -1,4 +1,9 @@
+language: generic
 services: docker
+addons:
+  apt:
+    packages:
+      - docker-ce
 
 script:
   - echo "$DOCKER_PASSWORD" | docker login -u dongzhuoer --password-stdin
