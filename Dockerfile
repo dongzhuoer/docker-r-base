@@ -1,7 +1,6 @@
 
-FROM scratch
+FROM ubuntu:rolling
 
-MAINTAINER Zhuoer Dong <dongzhuoer@mail.nankai.edu.cn>
+LABEL maintainer="Zhuoer Dong <dongzhuoer@mail.nankai.edu.cn>"
 
-COPY hello /
-CMD ["/hello"]
+

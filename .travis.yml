@@ -6,4 +6,7 @@ addons:
       - docker-ce
 
 script:
+  - docker build -t dongzhuoer/r-base .
+after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u dongzhuoer --password-stdin
+  - docker push dongzhuoer/r-base
