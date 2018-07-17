@@ -1,6 +1,4 @@
-services:
-  - docker
+services: docker
 
 script:
-    docker info
-    
+  - echo "$DOCKER_PASSWORD" | docker login -u dongzhuoer --password-stdin
