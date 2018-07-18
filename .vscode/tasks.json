@@ -7,7 +7,7 @@
 	"tasks": [
         {
 			"label": "build",
-            "command": "docker build -t dongzhuoer/rlang:base base",	
+            "command": "docker build devtools",	
             "group": {
                 "kind": "build",
                 "isDefault": true
@@ -15,9 +15,25 @@
             "problemMatcher": [],
         },
         {
-			"label": "hello",
-			"command": "echo hello",			
+			"label": "base",
+			"command": "docker build -t dongzhuoer/rlang:base base",			
             "problemMatcher": [],
-		},
+		},        {
+			"label": "devtools",
+			"command": "docker build -t dongzhuoer/rlang:devtools devtools",			
+            "problemMatcher": [],
+		},        {
+			"label": "devtools-dev",
+			"command": "docker build -t dongzhuoer/rlang:devtools-dev devtools-dev",			
+            "problemMatcher": [],
+		},        {
+			"label": "bioc",
+			"command": "docker build -t dongzhuoer/rlang:bioc bioc",			
+            "problemMatcher": [],
+		},        {
+			"label": "bookdown",
+			"command": "docker build -t dongzhuoer/rlang:bookdown bookdown",			
+            "problemMatcher": [],
+		}
 	]
 }
