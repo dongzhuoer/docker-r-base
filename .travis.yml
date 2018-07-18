@@ -10,3 +10,6 @@ script:
 
   - echo "$DOCKER_PASSWORD" | docker login -u dongzhuoer --password-stdin
   - docker push dongzhuoer/rlang:base
+
+notifications:
+  email: false
