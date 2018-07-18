@@ -1,9 +1,5 @@
 language: generic
 services: docker
-addons:
-  apt:
-    packages:
-      - docker-ce
 
 script:
   - docker build -t dongzhuoer/rlang:base .
