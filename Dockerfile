@@ -5,7 +5,9 @@ LABEL maintainer="Zhuoer Dong <dongzhuoer@mail.nankai.edu.cn>"
 ## Set a default user. Available via runtime flag `--user docker`. User should also have & own a home directory. 
 RUN useradd docker && mkdir /home/docker
 
-RUN apt update && apt -y install add-apt-key software-properties-common \
+# tzdata is a dependency of r-base-dev, so it's the same as we just install the latter
+RUN apt update && apt -y install tzdata add-apt-key software-properties-common \
+    && echo "Asia/Shanghai" > /etc/timezone && dpkg-reconfigure -f noninteractive tzdata \
     && apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys E084DAB9 \
     && apt-add-repository -y "deb https://mirrors4.tuna.tsinghua.edu.cn/CRAN/bin/linux/ubuntu bionic-cran35/" \
     && apt update && apt -y install r-base-dev && rm -r /usr/local/lib/R/site-library/ \

@@ -1,7 +1,7 @@
 # r-base
 [![Build Status](https://travis-ci.com/dongzhuoer/docker-r-base.svg?branch=master)](https://travis-ci.com/dongzhuoer/docker-r-base)
 
-R (read for installing packages)
+R (ready for installing packages, with China timezone)
 
 in https://mirrors.tuna.tsinghua.edu.cn/CRAN/bin/linux/ubuntu/README.html  
 
