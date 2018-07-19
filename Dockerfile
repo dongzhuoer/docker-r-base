@@ -10,7 +10,7 @@ RUN apt update && apt -y install add-apt-key software-properties-common \
     && apt-add-repository -y "deb https://mirrors4.tuna.tsinghua.edu.cn/CRAN/bin/linux/ubuntu bionic-cran35/" \
     && apt update && apt -y install r-base-dev && rm -r /usr/local/lib/R/site-library/ \
     && apt -y purge add-apt-key software-properties-common \
-    && apt -y autoremove && apt clean && rm -r /var/lib/apt/lists/
+    && apt -y autoremove && ls -R /var/cache/apt/archives/ && apt clean && rm -r /var/lib/apt/lists/
 
 RUN echo "options(BioC_mirror = 'https://mirrors4.tuna.tsinghua.edu.cn/bioconductor')" >> /usr/lib/R/etc/Rprofile.site 
 RUN echo "options(repos = c('CRAN' = 'https://mirrors4.tuna.tsinghua.edu.cn/CRAN'))" >> /usr/lib/R/etc/Rprofile.site 
