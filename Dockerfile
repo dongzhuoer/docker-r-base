@@ -13,9 +13,8 @@ RUN apt update && apt -y install tzdata add-apt-key software-properties-common \
     && apt update && apt -y install r-base-dev && rm -r /usr/local/lib/R/site-library/ \
     && apt -y purge add-apt-key software-properties-common && apt -y autoremove && rm -r /var/lib/apt/lists/
 
+RUN echo 'R_LIBS_USER="~/.local/lib/R"' > /usr/lib/R/etc/Renviron.site 
 RUN echo "options(BioC_mirror = 'https://mirrors4.tuna.tsinghua.edu.cn/bioconductor')" >> /usr/lib/R/etc/Rprofile.site 
 RUN echo "options(repos = c('CRAN' = 'https://mirrors4.tuna.tsinghua.edu.cn/CRAN'))" >> /usr/lib/R/etc/Rprofile.site 
 
-RUN echo 'R_LIBS_USER="~/.local/lib/R"' > /home/docker/.Renviron
-RUN mkdir -p /home/docker/.local/lib/R
-RUN chown -R docker:docker /home/docker
+RUN mkdir -p /home/docker/.local/lib/R && chown -R docker:docker /home/docker
