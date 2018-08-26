@@ -3,7 +3,7 @@ FROM dongzhuoer/ubuntu-cn:rolling
 LABEL maintainer="Zhuoer Dong <dongzhuoer@mail.nankai.edu.cn>"
 
 ## Set a default user. Available via runtime flag `--user docker`. User should also have & own a home directory. 
-RUN useradd docker && mkdir /home/docker
+RUN useradd -m -s /bin/bash docker 
 
 # tzdata is a dependency of r-base-dev, so it's the same as we just install the latter
 RUN apt update && apt -y install tzdata add-apt-key software-properties-common \
