@@ -2,9 +2,13 @@ FROM dongzhuoer/ubuntu-cn:rolling
 
 LABEL maintainer="Zhuoer Dong <dongzhuoer@mail.nankai.edu.cn>"
 
-## Set a default user. Available via runtime flag `--user docker`. User should also have & own a home directory. 
+# Set a default user. Available via runtime flag `--user docker`. User should also have & own a home directory. 
 RUN useradd -m -s /bin/bash docker 
 
+# Asia/Shanghai doesn't work
+# $ docker run --rm dongzhuoer/rlang:base cat /etc/timezone
+# Etc/UTC
+# you may need `add-apt-key software-properties-common apt ...` if you asked to choose timezone thus timeout
 # tzdata is a dependency of r-base-dev, so it's the same as we just install the latter
 RUN apt update && apt -y install tzdata add-apt-key software-properties-common \
     && echo "Asia/Shanghai" > /etc/timezone && dpkg-reconfigure -f noninteractive tzdata \
