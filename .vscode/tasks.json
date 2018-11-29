@@ -7,7 +7,7 @@
 	"tasks": [
         {
 			"label": "build",
-            "command": "docker build -t dongzhuoer/rlang:base .",	
+            "command": "echo haha",	
             "group": {
                 "kind": "build",
                 "isDefault": true
