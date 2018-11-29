@@ -1,7 +1,14 @@
 # Overwiew
 [![Build Status](https://travis-ci.com/dongzhuoer/docker-r-base.svg?branch=master)](https://travis-ci.com/dongzhuoer/docker-r-base)
 
-R language (ready for installing packages, with China timezone)
+R language Docker image
+
+This image mainly serves for Zhuoer Dong's personal use (some setting like mirror & timezone may not suit for everyone)
+
+# featrues 
+
+1. ready for installing packages,
+1. China timezone
 
 # structure
 
