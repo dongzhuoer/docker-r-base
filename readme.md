@@ -12,11 +12,13 @@ This image mainly serves for Zhuoer Dong's personal use (some setting like mirro
 
 # structure
 
-  /----------bookdown - lulab
- /---------bookdown-full
-base --- devtools ---- bioc
-            \---------zhuoerdown ------- 
-
+```
+  ------ bookdown-full
+ /
+base --- remotes ---- zhuoerdown
+ \
+  --------devtools 
+```
 
 # about this Docker
 
