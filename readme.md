@@ -17,7 +17,7 @@ This image mainly serves for Zhuoer Dong's personal use (some setting like mirro
  /
 base --- remotes ---- zhuoerdown
  \
-  --------devtools 
+  --------deverse 
 ```
 
 # about this Docker
