@@ -1,8 +1,0 @@
-language: generic
-services: docker
-
-script:
-  - echo haha
-
-notifications:
-  email: false
