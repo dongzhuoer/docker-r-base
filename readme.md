@@ -8,8 +8,8 @@ This image mainly serves for Zhuoer Dong's personal use (some setting like mirro
 
 # featrues 
 
-1. ready for installing packages,
 1. China timezone
+1. common system dependencies installed
 
 
 # structure
