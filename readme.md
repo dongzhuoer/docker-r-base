@@ -5,10 +5,12 @@ R language Docker image
 
 This image mainly serves for Zhuoer Dong's personal use (some setting like mirror & timezone may not suit for everyone)
 
+
 # featrues 
 
 1. ready for installing packages,
 1. China timezone
+
 
 # structure
 
@@ -19,6 +21,7 @@ base --- remotes ---- zhuoerdown
  \
   ------ deverse 
 ```
+
 
 # about this Docker
 
