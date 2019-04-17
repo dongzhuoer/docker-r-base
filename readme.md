@@ -15,8 +15,6 @@ This image mainly serves for Zhuoer Dong's personal use (some setting like mirro
 # structure
 
 ```
-  ------ bookdown-full
- /
 base --- remotes ---- zhuoerdown
  \
   ------ deverse 
