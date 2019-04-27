@@ -1,0 +1,22 @@
+dist: xenial
+language: generic
+services: docker
+
+jobs:  
+  include:
+    - stage: base
+      script: ./script.sh base  
+    - stage: remotes
+      script: ./script.sh remotes  
+    - stage: application
+      script: ./script.sh zhuoerdown  
+      name: zhuoerdown
+    - script: ./script.sh deverse  
+      name: deverse
+    - script: ./script.sh pkgdown  
+      name: pkgdown
+
+notifications:
+  email: false
+
+
