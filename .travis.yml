@@ -9,12 +9,14 @@ jobs:
     - stage: remotes
       script: bash script.sh remotes  
     - stage: application
-      script: bash script.sh zhuoerdown  
-      name: zhuoerdown
-    - script: bash script.sh deverse  
+      script: bash script.sh deverse  
       name: deverse
     - script: bash script.sh pkgdown  
       name: pkgdown
+    - script: bash script.sh blogdown  
+      name: blogdown
+    - script: bash script.sh zhuoerdown  
+      name: zhuoerdown
 
 notifications:
   email: false
