@@ -13,12 +13,10 @@ jobs:
       name: deverse
     - script: bash script.sh pkgdown  
       name: pkgdown
-    - script: bash script.sh blogdown  
-      name: blogdown
     - script: bash script.sh zhuoerdown  
       name: zhuoerdown
+    - script: bash script.sh blogdown  
+      name: blogdown
 
 notifications:
   email: false
-
-

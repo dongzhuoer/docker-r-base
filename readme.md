@@ -15,11 +15,13 @@ This image mainly serves for Zhuoer Dong's personal use (some setting like mirro
 # structure
 
 ```
-base --- remotes ---- zhuoerdown
+base --- remotes ---- deverse
             |
-            |-------- deverse 
+            |-------- pkgdown 
             |
-            |-------- pkgdown
+            |-------- zhuoerdown 
+            |
+            |-------- blogdown
 ```
 
 
@@ -46,7 +48,10 @@ base --- remotes ---- zhuoerdown
   
   R for building **pkgdown** website.
 
+- blogdown
+  
+  R with **blogdown**, Hugo (and **remotes**) installed.
+
 - zhuoerdown
   
-  R with **zhuoerdown** (and **remotes**) installed.
-
+  R with **zhuoerdown**, Pandoc (and **remotes**) installed.
