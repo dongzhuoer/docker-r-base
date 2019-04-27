@@ -8,10 +8,13 @@ jobs:
       script: bash script.sh base  
     - stage: remotes
       script: bash script.sh remotes  
-    - stage: application
+    - stage: "remotes derived"
       script: bash script.sh deverse  
       name: deverse
-    - script: bash script.sh pkgdown  
+    - script: bash script.sh rmarkdown  
+      name: rmarkdown
+    - stage: "rmarkdown derived"
+      script: bash script.sh pkgdown  
       name: pkgdown
     - script: bash script.sh zhuoerdown  
       name: zhuoerdown

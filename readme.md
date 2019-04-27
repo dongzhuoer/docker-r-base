@@ -15,13 +15,15 @@ This image mainly serves for Zhuoer Dong's personal use (some setting like mirro
 # structure
 
 ```
-base --- remotes ---- deverse
+base --- remotes --- deverse
             |
-            |-------- pkgdown 
-            |
-            |-------- zhuoerdown 
-            |
-            |-------- blogdown
+            |------- rmarkdown 
+                         |
+                         |--- pkgdown 
+                         |
+                         |--- zhuoerdown 
+                         |
+                         |--- blogdown
 ```
 
 
@@ -38,20 +40,26 @@ base --- remotes ---- deverse
 
 - remotes
 
-  R with **remotes** and Git installed.
+  R with **remotes** and Git installed. 
+
+  It's the _virtual_ base image, since installing packages from GitHub is a vast demand.
 
 - deverse
   
-  R with **dev**lopment uni**verse** packages and Git installed.
+  R with **dev**lopment uni**verse** packages installed.
+
+- rmarkdown
+  
+  R with **rmarkdown** installed.
 
 - pkgdown
   
   R for building **pkgdown** website.
 
-- blogdown
-  
-  R with **blogdown**, Hugo (and **remotes**) installed.
-
 - zhuoerdown
   
-  R with **zhuoerdown**, Pandoc (and **remotes**) installed.
+  R with **zhuoerdown** installed.
+
+- blogdown
+  
+  R with **blogdown** and Hugo installed.
