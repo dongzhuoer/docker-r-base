@@ -60,6 +60,14 @@ base --- remotes --- deverse
   R with **zhuoerdown** installed.
 
 
+
+# Travis usage
+
+1. see `localsite` for simple usage, directly run as root
+1. see `minir` for comprehensive usage, including multiple jobs, as normal user, deploy output.
+
+
+
 # to do
 
 1. China timezone
