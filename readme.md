@@ -1,14 +1,15 @@
 # R language Docker image
 [![Build Status](https://travis-ci.com/dongzhuoer/docker-rlang.svg?branch=master)](https://travis-ci.com/dongzhuoer/docker-rlang)
 
-This image mainly serves for Zhuoer Dong's personal use (some setting like mirror & timezone may not suit for everyone)
+This image mainly meets Zhuoer Dong's personal preference, use it with caution.
 
 
 
 # featrues 
 
-1. China timezone
 1. common system dependencies installed
+1. chinese mirror for installing packages
+1. ready for using by normal user (`R_LIBS_USER="~/.local/lib/R"`)
 
 
 
@@ -22,8 +23,6 @@ base --- remotes --- deverse
                          |--- pkgdown 
                          |
                          |--- zhuoerdown 
-                         |
-                         |--- blogdown
 ```
 
 
@@ -60,6 +59,13 @@ base --- remotes --- deverse
   
   R with **zhuoerdown** installed.
 
-- blogdown
-  
-  R with **blogdown** and Hugo installed.
+
+# to do
+
+1. China timezone
+
+```bash
+# Asia/Shanghai doesn't work
+# $ docker run --rm dongzhuoer/rlang:base cat /etc/timezone
+# Etc/UTC
+```

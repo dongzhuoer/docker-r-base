@@ -6,8 +6,9 @@
     },
 	"tasks": [
         {
-			"label": "build",
-            "command": "echo haha",	
+            "label": "build",
+            // sed 's/Rmd/html/'
+            "command": "docker build -t rlang -f ${relativeFile} .", 
             "group": {
                 "kind": "build",
                 "isDefault": true
