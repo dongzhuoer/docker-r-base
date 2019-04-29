@@ -70,10 +70,9 @@ base --- remotes --- deverse
 
 # to do
 
-1. China timezone
+1.  Asia/Shanghai doesn't work
 
 ```bash
-# Asia/Shanghai doesn't work
-# $ docker run --rm dongzhuoer/rlang:base cat /etc/timezone
-# Etc/UTC
+$ docker run --rm dongzhuoer/rlang:base cat /etc/timezone
+Etc/UTC
 ```
