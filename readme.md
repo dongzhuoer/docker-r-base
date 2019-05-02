@@ -13,7 +13,7 @@ This image mainly meets Zhuoer Dong's personal preference, use it with caution.
 
 
 
-# structure
+# tag
 
 ```
 base --- remotes --- deverse
@@ -23,11 +23,9 @@ base --- remotes --- deverse
                          |--- pkgdown 
                          |
                          |--- zhuoerdown 
+                         |
+                         |--- blogdown 
 ```
-
-
-
-# detail
 
 - base 
 
@@ -59,12 +57,24 @@ base --- remotes --- deverse
   
   R with **zhuoerdown** installed.
 
+- blogdown
+  
+  R with **blogdown** installed.
 
 
-# Travis usage
 
-1. see `localsite` for simple usage, directly run as root
-1. see `minir` for comprehensive usage, including multiple jobs, as normal user, deploy output.
+# Usage
+
+I mainly use it on Travis CI.
+
+## simple usage
+
+see `localsite`, directly run as root.
+
+
+## test package
+
+see `minir`, it also demonstrates how to deploy output (it's much easy if you run as normal user).
 
 
 
