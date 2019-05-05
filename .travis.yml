@@ -18,6 +18,8 @@ jobs:
       name: pkgdown
     - script: bash script.sh zhuoerdown  
       name: zhuoerdown
+    - script: bash script.sh blogdown  
+      name: blogdown
 
 notifications:
   email: false

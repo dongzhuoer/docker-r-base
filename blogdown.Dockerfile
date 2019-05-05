@@ -1,4 +1,4 @@
-FROM dongzhuoer/rlang:remotes
+FROM dongzhuoer/rlang:rmarkdown
 
 LABEL maintainer="Zhuoer Dong <dongzhuoer@mail.nankai.edu.cn>"
 

@@ -98,7 +98,13 @@ script: docker exec rlang0 R --slave -e "rmarkdown::render('main.Rmd')"
 
 see `minir`, it also demonstrates how to deploy output (it's much easy if you run as normal user).
 
+## tips
 
+1. install some pkg quietly to reduce log
+
+```r
+remotes::update_packages(c('RcppEigen', 'igraph', 'ggforce', 'RSQLite', 'Rhdf5lib'), upgrade = TRUE, quiet = TRUE)
+```
 
 # to do
 
