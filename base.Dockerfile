@@ -17,7 +17,7 @@ RUN apt update && apt -y install r-base-dev && rm -r /usr/local/lib/R/site-libra
 
 # post
 ## common system dependencies for R packages
-RUN apt update && apt -y install libcurl4-openssl-dev libssl-dev libxml2-dev && rm -r /var/lib/apt/lists/
+RUN apt update && apt -y install libcurl4-openssl-dev libssl-dev libxml2-dev libcairo2-dev && rm -r /var/lib/apt/lists/
 ## configuration
 RUN echo 'R_LIBS_USER="~/.local/lib/R"' > /usr/lib/R/etc/Renviron.site 
 RUN echo "options(BioC_mirror = 'https://mirrors4.tuna.tsinghua.edu.cn/bioconductor')" >> /usr/lib/R/etc/Rprofile.site 

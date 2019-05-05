@@ -94,10 +94,6 @@ install:
 script: docker exec rlang0 R --slave -e "rmarkdown::render('main.Rmd')"
 ```
 
-```r
-
-```
-
 ## test package
 
 see `minir`, it also demonstrates how to deploy output (it's much easy if you run as normal user).
