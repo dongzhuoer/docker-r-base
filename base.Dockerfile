@@ -1,4 +1,4 @@
-FROM dongzhuoer/ubuntu-cn:cosmic
+FROM dongzhuoer/ubuntu-cn:disco
 
 LABEL maintainer="Zhuoer Dong <dongzhuoer@mail.nankai.edu.cn>"
 
@@ -6,7 +6,7 @@ LABEL maintainer="Zhuoer Dong <dongzhuoer@mail.nankai.edu.cn>"
 ## add CRAN source for latest R
 RUN apt update && apt -y install add-apt-key software-properties-common \
     && apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys E084DAB9 \
-    && apt-add-repository -y "deb https://mirrors4.tuna.tsinghua.edu.cn/CRAN/bin/linux/ubuntu cosmic-cran35/" \
+    && apt-add-repository -y "deb https://mirrors4.tuna.tsinghua.edu.cn/CRAN/bin/linux/ubuntu disco-cran35/" \
     && apt -y purge add-apt-key software-properties-common && apt -y autoremove && rm -r /var/lib/apt/lists/
 ## if you install r-base-dev directly, it would ask you to choose timezone and cause timeout
 RUN apt update && apt -y install tzdata && rm -r /var/lib/apt/lists/
