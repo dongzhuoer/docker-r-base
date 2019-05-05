@@ -71,6 +71,32 @@ I mainly use it on Travis CI.
 
 see `localsite`, directly run as root.
 
+## normal user & cache packages
+
+```yaml
+dist: xenial
+language: minimal
+git:
+  depth: false
+  submodules: false
+cache: 
+  directories: [$HOME/.local/lib/R/]
+
+install:
+  # create container
+  - docker run -dt --name rlang0 -w $HOME -u `id -u`:`id -g` -e CI=true -e GITHUB_PAT=$GITHUB_PAT -v $TRAVIS_BUILD_DIR:$HOME -v $HOME/.local/lib/R:$HOME/.local/lib/R dongzhuoer/rlang:rmarkdown 2> /dev/null
+  # add user & group (assuming the image contains no user)
+  - docker exec -u root rlang0 groupadd `id -gn` -g `id -g`
+  - docker exec -u root rlang0 useradd $USER -u `id -u` -g `id -g`
+  # (optional) install additional software & packages
+  - docker exec -u root rlang0 bash -c "apt update && apt -y install hugo"
+  - docker exec -u root rlang0 R --slave -e "remotes::update_packages(c('magrittr'))"
+script: docker exec rlang0 R --slave -e "rmarkdown::render('main.Rmd')"
+```
+
+```r
+
+```
 
 ## test package
 
