@@ -5,7 +5,7 @@ LABEL maintainer="Zhuoer Dong <dongzhuoer@mail.nankai.edu.cn>"
 # prepare
 ## add CRAN source for latest R
 RUN apt update && apt -y install add-apt-key software-properties-common \
-    && apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys E084DAB9 \
+    && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9 \
     && apt-add-repository -y "deb https://mirrors4.tuna.tsinghua.edu.cn/CRAN/bin/linux/ubuntu disco-cran35/" \
     && apt -y purge add-apt-key software-properties-common && apt -y autoremove && rm -r /var/lib/apt/lists/
 ## if you install r-base-dev directly, it would ask you to choose timezone and cause timeout
