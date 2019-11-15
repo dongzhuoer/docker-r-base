@@ -1,4 +1,4 @@
-FROM dongzhuoer/ubuntu-cn:disco
+FROM dongzhuoer/ubuntu-cn:eoan
 
 LABEL maintainer="Zhuoer Dong <dongzhuoer@mail.nankai.edu.cn>"
 
