@@ -1,6 +1,5 @@
-dist: xenial
-language: generic
-services: docker
+dist: bionic
+language: minimal
 
 jobs:  
   include:
