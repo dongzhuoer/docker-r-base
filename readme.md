@@ -13,6 +13,50 @@ This image mainly meets Zhuoer Dong's personal preference, use it with caution.
 
 
 
+# Usage
+
+I mainly use it on Travis CI. Note that `.travis.yml` in the following is not complete (to save space).
+
+## simple usage
+
+The simplest way is to directly run as root. The drawback is that output files belongs to root, thus very hard to manipulate outside the container (when you test on local or debug on Travis).
+
+```yaml
+language: minimal
+install: docker run -dt --name rlang0 -w /root -v `pwd`:/root dongzhuoer/rlang:blogdown 2> /dev/null
+script: docker exec rlang0 Rscript -e "blogdown::build_site(local = TRUE)"
+```
+
+- `-dt` keeps the container running
+- `2> /dev/null` avoid a lot of message in Travis job log  
+- `-v` mount current directory to `/root` and works (`-w`) there, which must be empty (you may use consider `$TRAVIS_REPO_SLUG`).
+
+
+
+## normal user & cache packages
+
+```yaml
+cache: 
+  directories: [$HOME/.local/lib/R/]
+
+install:
+  # create container
+  - docker run -dt --name rlang0 -w $HOME -u `id -u`:`id -g` -e CI=true -e GITHUB_PAT=$GITHUB_PAT -v $TRAVIS_BUILD_DIR:$HOME -v $HOME/.local/lib/R:$HOME/.local/lib/R dongzhuoer/rlang:rmarkdown 2> /dev/null
+  # add user & group (assuming the image contains no user)
+  - docker exec -u root rlang0 groupadd `id -gn` -g `id -g`
+  - docker exec -u root rlang0 useradd $USER -u `id -u` -g `id -g`
+  # (optional) install additional software & packages
+  - docker exec -u root rlang0 bash -c "apt update && apt -y install hugo"
+  - docker exec -u root rlang0 R --slave -e "remotes::update_packages(c('magrittr'))"
+script: docker exec rlang0 R --slave -e "rmarkdown::render('main.Rmd')"
+```
+
+## testthat
+
+see `minir`, it also demonstrates how to deploy output (it's much easy if you run as normal user).
+
+
+
 # tag
 
 ```
@@ -60,43 +104,6 @@ base --- remotes --- deverse
 - blogdown
   
   R with **blogdown** installed.
-
-
-
-# Usage
-
-I mainly use it on Travis CI.
-
-## simple usage
-
-see `localsite`, directly run as root.
-
-## normal user & cache packages
-
-```yaml
-dist: xenial
-language: minimal
-git:
-  depth: false
-  submodules: false
-cache: 
-  directories: [$HOME/.local/lib/R/]
-
-install:
-  # create container
-  - docker run -dt --name rlang0 -w $HOME -u `id -u`:`id -g` -e CI=true -e GITHUB_PAT=$GITHUB_PAT -v $TRAVIS_BUILD_DIR:$HOME -v $HOME/.local/lib/R:$HOME/.local/lib/R dongzhuoer/rlang:rmarkdown 2> /dev/null
-  # add user & group (assuming the image contains no user)
-  - docker exec -u root rlang0 groupadd `id -gn` -g `id -g`
-  - docker exec -u root rlang0 useradd $USER -u `id -u` -g `id -g`
-  # (optional) install additional software & packages
-  - docker exec -u root rlang0 bash -c "apt update && apt -y install hugo"
-  - docker exec -u root rlang0 R --slave -e "remotes::update_packages(c('magrittr'))"
-script: docker exec rlang0 R --slave -e "rmarkdown::render('main.Rmd')"
-```
-
-## test package
-
-see `minir`, it also demonstrates how to deploy output (it's much easy if you run as normal user).
 
 
 
