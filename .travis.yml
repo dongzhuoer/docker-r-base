@@ -19,8 +19,6 @@ jobs:
       name: zhuoerdown
     - script: bash script.sh blogdown  
       name: blogdown
-    - script: bash script.sh build-r-pkgs  
-      name: build-r-pkgs
 
 notifications:
   email: false

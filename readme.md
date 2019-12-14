@@ -64,11 +64,11 @@ base --- remotes --- deverse
             |
             |------- rmarkdown 
                          |
-                         |--- pkgdown 
+                         |------ pkgdown 
                          |
-                         |--- zhuoerdown 
+                         |------ zhuoerdown 
                          |
-                         |--- blogdown 
+                         |------ blogdown 
 ```
 
 - base 
