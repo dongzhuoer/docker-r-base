@@ -9,7 +9,6 @@ This image mainly meets Zhuoer Dong's personal preference, use it with caution.
 
 1. common system dependencies installed
 1. chinese mirror for installing packages
-1. ready for using by normal user (`R_LIBS_USER="~/.local/lib/R"`)
 
 
 
@@ -30,26 +29,6 @@ script: docker exec rlang0 Rscript -e "blogdown::build_site(local = TRUE)"
 - `-dt` keeps the container running
 - `2> /dev/null` avoid a lot of message in Travis job log  
 - `-v` mount current directory to `/root` and works (`-w`) there, which must be empty (you may use consider `$TRAVIS_REPO_SLUG`).
-
-
-
-## normal user & cache packages
-
-```yaml
-cache: 
-  directories: [$HOME/.local/lib/R/]
-
-install:
-  # create container
-  - docker run -dt --name rlang0 -w $HOME -u `id -u`:`id -g` -e CI=true -e GITHUB_PAT=$GITHUB_PAT -v $TRAVIS_BUILD_DIR:$HOME -v $HOME/.local/lib/R:$HOME/.local/lib/R dongzhuoer/rlang:rmarkdown 2> /dev/null
-  # add user & group (assuming the image contains no user)
-  - docker exec -u root rlang0 groupadd `id -gn` -g `id -g`
-  - docker exec -u root rlang0 useradd $USER -u `id -u` -g `id -g`
-  # (optional) install additional software & packages
-  - docker exec -u root rlang0 bash -c "apt update && apt -y install hugo"
-  - docker exec -u root rlang0 Rscript -e "remotes::update_packages(c('magrittr'))"
-script: docker exec rlang0 Rscript -e "rmarkdown::render('main.Rmd')"
-```
 
 ## testthat
 
