@@ -13,7 +13,7 @@ RUN apt update && apt -y install tzdata && rm -r /var/lib/apt/lists/
 RUN echo "Asia/Shanghai" > /etc/timezone && dpkg-reconfigure -f noninteractive tzdata
 
 # install
-RUN apt update && apt -y install r-base-dev
+RUN apt update && apt -y install r-base-dev && rm -r /usr/local/lib/R/site-library/
 
 # post
 ## common system dependencies for R packages
