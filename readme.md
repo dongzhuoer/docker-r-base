@@ -47,8 +47,8 @@ install:
   - docker exec -u root rlang0 useradd $USER -u `id -u` -g `id -g`
   # (optional) install additional software & packages
   - docker exec -u root rlang0 bash -c "apt update && apt -y install hugo"
-  - docker exec -u root rlang0 R --slave -e "remotes::update_packages(c('magrittr'))"
-script: docker exec rlang0 R --slave -e "rmarkdown::render('main.Rmd')"
+  - docker exec -u root rlang0 Rscript -e "remotes::update_packages(c('magrittr'))"
+script: docker exec rlang0 Rscript -e "rmarkdown::render('main.Rmd')"
 ```
 
 ## testthat
