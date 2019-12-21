@@ -62,7 +62,7 @@ base --- remotes --- deverse
 
   R with **remotes** and Git installed. 
 
-  It's the _virtual_ base image, since installing packages from GitHub is a vast demand.
+  It's the _virtual_ base image, since installing packages from GitHub is a vast demand (and I prefer to use Git inside Docker). 
 
 - deverse
   
