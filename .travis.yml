@@ -1,5 +1,7 @@
 dist: bionic
 language: minimal
+notifications:
+  email: false
 
 jobs:  
   include:
@@ -19,6 +21,3 @@ jobs:
       name: zhuoerdown
     - script: bash script.sh blogdown  
       name: blogdown
-
-notifications:
-  email: false
