@@ -16,6 +16,10 @@ This image mainly meets Zhuoer Dong's personal preference, use it with caution.
 
 I mainly use it on Travis CI. Note that `.travis.yml` in the following is not complete (to save space).
 
+- 能 `cp` 就不要 `-v`
+- `/root/` 作为 project folder，用 `git/`，`output/` 等完成特定任务（有时也用 `/git`, `/output`）。
+  
+
 ## simple usage
 
 The simplest way is to directly run as root. The drawback is that output files belongs to root, thus very hard to manipulate outside the container (when you test on local or debug on Travis).
@@ -29,6 +33,11 @@ script: docker exec rlang0 Rscript -e "blogdown::build_site(local = TRUE)"
 - `-dt` keeps the container running
 - `2> /dev/null` avoid a lot of message in Travis job log  
 - `-v` mount current directory to `/root` and works (`-w`) there, which must be empty (you may use consider `$TRAVIS_REPO_SLUG`).
+
+## build & depoly
+
+- mount `wd/` to `/root` (or copy `./.`)
+- `repo/` for source code, `output/` for result, `git` for deploy
 
 ## testthat
 
