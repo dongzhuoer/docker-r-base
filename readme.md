@@ -1,14 +1,12 @@
-# R language Docker image
+# Overview
 [![Build Status](https://travis-ci.com/dongzhuoer/docker-rlang.svg?branch=master)](https://travis-ci.com/dongzhuoer/docker-rlang)
 
-This image mainly meets Zhuoer Dong's personal preference, use it with caution.
-
-
-
-# featrues 
+R language Docker image with following featrues: 
 
 1. common system dependencies installed
 1. chinese mirror for installing packages
+
+> This image mainly meets Zhuoer Dong's personal preference, use it with caution.
 
 
 
