@@ -1,19 +1,23 @@
 {
     "version": "2.0.0",
     "type": "shell",
+    "problemMatcher": [],
     "presentation": {
         "reveal": "silent"
     },
-	"tasks": [
+    "tasks": [
         {
             "label": "build",
-            // sed 's/Rmd/html/'
-            "command": "docker build -t rlang -f ${relativeFile} .", 
+            "command": "docker build -t rlang -f ${relativeFile} .",
             "group": {
                 "kind": "build",
                 "isDefault": true
-            },		
+            },
             "problemMatcher": [],
-        }
-	]
+        },
+        {
+            "label": "view GitHub",
+            "command": "google-chrome https://github.com/dongzhuoer/docker-rlang 2> /dev/null",
+        },
+    ]
 }

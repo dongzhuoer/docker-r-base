@@ -36,6 +36,7 @@ script: docker exec rlang0 Rscript -e "blogdown::build_site(local = TRUE)"
 
 - mount `wd/` to `/root` (or copy `./.`)
 - `repo/` for source code, `output/` for result, `git` for deploy
+- example, [homesite](https://github.com/dongzhuoer/homesite/blob/master/.travis.yml) --|-- [thesis](https://github.com/dongzhuoer/thesis/blob/master/.travis.yml)
 
 ## testthat
 

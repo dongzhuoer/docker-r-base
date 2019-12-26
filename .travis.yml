@@ -5,16 +5,18 @@ notifications:
 
 jobs:  
   include:
-    - stage: base
+    - stage: core
+      name: base
       script: bash script.sh base  
-    - stage: remotes
+    - stage: fundamental package
+      name: remotes
       script: bash script.sh remotes  
-    - stage: "remotes derived"
+    - stage: remotes derived
       script: bash script.sh deverse  
       name: deverse
     - script: bash script.sh rmarkdown  
       name: rmarkdown
-    - stage: "rmarkdown derived"
+    - stage: rmarkdown derived
       script: bash script.sh pkgdown  
       name: pkgdown
     - script: bash script.sh zhuoerdown  
