@@ -42,6 +42,7 @@ script: docker exec rlang0 Rscript -e "blogdown::build_site(local = TRUE)"
 
 see `minir`, it also demonstrates how to deploy output (it's much easy if you run as normal user).
 
+for system dependency: `before_script: source .vscode/ci-env.sh # make .travis.yml universe`
 
 
 # tag
@@ -102,3 +103,9 @@ base --- remotes --- deverse
 $ docker run --rm dongzhuoer/rlang:base cat /etc/timezone
 Etc/UTC
 ```
+
+
+
+-----------------------
+[![Creative Commons License](https://i.creativecommons.org/l/by-nc/4.0/88x31.png)](http://creativecommons.org/licenses/by-nc/4.0/)  
+This work is licensed under a [Creative Commons Attribution-NonCommercial 4.0 International License](http://creativecommons.org/licenses/by-nc/4.0/)
