@@ -17,7 +17,7 @@
         },
         {
             "label": "view GitHub",
-            "command": "google-chrome https://github.com/dongzhuoer/docker-rlang 2> /dev/null",
+            "command": " https://github.com/dongzhuoer/docker-rlang 2> /dev/null",
         },
     ]
 }
