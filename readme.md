@@ -12,37 +12,38 @@ R language Docker image with following featrues:
 
 # Usage
 
-I mainly use it on Travis CI. Note that `.travis.yml` in the following is not complete (to save space).
-
-- 能 `cp` 就不要 `-v`
-- `/root/` 作为 project folder，用 `git/`，`output/` 等完成特定任务（有时也用 `/git`, `/output`）。
-  
+The core idea is to suit for both Travis CI and local debug.
 
 ## simple usage
 
-The simplest way is to directly run as root. The drawback is that output files belongs to root, thus very hard to manipulate outside the container (when you test on local or debug on Travis).
+The simplest way is to directly mount current directory into container and run the command, such as [localsite](https://github.com/dongzhuoer/localsite/blob/master/.travis.yml). One additional thing is to change user of output files from root to you.
 
 ```yaml
 language: minimal
-install: docker run -dt --name rlang0 -w /root -v `pwd`:/root dongzhuoer/rlang:blogdown 2> /dev/null
-script: docker exec rlang0 Rscript -e "blogdown::build_site(local = TRUE)"
+script: 
+  - docker run -dt --name rlang0 -w /root -v `pwd`:/root dongzhuoer/rlang:blogdown 2> /dev/null
+  - docker exec rlang0 Rscript -e "blogdown::build_site(local = TRUE)"
+  - docker exec rlang0 chown -R `id -u`:`id -g` content static public
+# `2> /dev/null` avoid a lot of message in Travis job log
 ```
-
-- `-dt` keeps the container running
-- `2> /dev/null` avoid a lot of message in Travis job log  
-- `-v` mount current directory to `/root` and works (`-w`) there, which must be empty (you may use consider `$TRAVIS_REPO_SLUG`).
 
 ## build & depoly
 
-- mount `wd/` to `/root` (or copy `./.`)
-- `repo/` for source code, `output/` for result, `git` for deploy
-- example, [homesite](https://github.com/dongzhuoer/homesite/blob/master/.travis.yml) --|-- [thesis](https://github.com/dongzhuoer/thesis/blob/master/.travis.yml)
+1. perfer `docker cp ./. container:/root` to ``-v `pwd`:/root``
+1. directory must have meaningful name and be empty:  
+   -  `/root` for working directory (stores source code)
+   - `/output` for result
+   - `/git` for deploy (clone remote)
 
-## testthat
+The above principles are best explained by examples:  
 
-see `minir`, it also demonstrates how to deploy output (it's much easy if you run as normal user).
+- [thesis](https://github.com/dongzhuoer/thesis/blob/master/.travis.yml) render `.Rmd` and deploy one file
+- [build-website](https://github.com/dongzhuoer/build-website/blob/master/bookdown.sh) fetch files (not build) and deploy   
+  I use `/root/git` since I'm sure it's empty
+- [autobookdown](https://github.com/dongzhuoer/autobookdown/blob/master/build.sh) render bookdown and deploy directory
+- [minir](https://github.com/dongzhuoer/minir/blob/master/.travis.yml) for R package and `import: dongzhuoer/minir:.travis.yml`  
+  for system dependency, set `$apt` in `before_script`
 
-for system dependency: `before_script: source .vscode/ci-env.sh # make .travis.yml universe`
 
 
 # tag
