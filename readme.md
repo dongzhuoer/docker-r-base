@@ -31,7 +31,7 @@ script:
 
 1. perfer `docker cp ./. container:/root` to ``-v `pwd`:/root``
 1. directory must have meaningful name and be empty:  
-   -  `/root` for working directory (stores source code)
+   - `/root` for working directory (stores source code)
    - `/output` for result
    - `/git` for deploy (clone remote)
 
