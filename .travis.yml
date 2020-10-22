@@ -7,16 +7,16 @@ jobs:
       script: bash script.sh base  
     - stage: fundamental package
       name: remotes
-      script: bash script.sh remotes  
+      script: bash script.sh remotes && docker run --rm dongzhuoer/rlang:remotes R -e "library(remotes)"
     - stage: remotes derived
-      script: bash script.sh deverse  
+      script: bash script.sh deverse && docker run --rm dongzhuoer/rlang:deverse R -e "library(testthat)"
       name: deverse
-    - script: bash script.sh rmarkdown  
-      name: rmarkdown
+    - name: rmarkdown
+      script: bash script.sh rmarkdown && docker run --rm dongzhuoer/rlang:rmarkdown R -e "library(rmarkdown)"
     - stage: rmarkdown derived
-      script: bash script.sh pkgdown  
       name: pkgdown
-    - script: bash script.sh zhuoerdown  
-      name: zhuoerdown
-    - script: bash script.sh blogdown  
-      name: blogdown
+      script: bash script.sh pkgdown && docker run --rm dongzhuoer/rlang:pkgdown R -e "library(pkgdown)"
+    - name: zhuoerdown
+      script: bash script.sh zhuoerdown && docker run --rm dongzhuoer/rlang:zhuoerdown R -e "library(zhuoerdown)"
+    - name: blogdown
+      script: bash script.sh blogdown && docker run --rm dongzhuoer/rlang:blogdown R -e "library(blogdown)"
